@@ -2,20 +2,27 @@ const express = require("express");
 let cors = require("cors");
 const router = require("./router");
 const mongoose = require("mongoose");
-require("dotenv").config();
+const dotenv = require("dotenv");
+let cookieParser = require("cookie-parser");
 
-const logger = require("morgan");
-const bodyParser = require("body-parser");
+dotenv.config();
 
 const app = express();
 const port = 3020;
 
+const logger = require("morgan");
+const bodyParser = require("body-parser");
+
+//connect to DB with mongoose and copied mongodb link + store in .env
 mongoose
   .connect(process.env.DB_CONNECTION_STRING)
   .then(() => console.log("MONGO_DB_CONNECTED SUCCESSFULLY"))
   .then((error) => console.log(error));
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:3020" }));
+app.use(cookieParser());
+
+//middleware that comes from morgan
 app.use(logger("dev"));
 
 app.use(express.json());
