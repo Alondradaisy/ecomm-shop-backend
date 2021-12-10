@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const uuid = require("uuid");
 const jwt = require("jsonwebtoken");
-const UserController = require("../controller/UserController");
+const UserController = require("../controller/UserController.js");
 
 const uuidv4 = uuid.v4;
 
