@@ -28,6 +28,25 @@ app.use(logger("dev"));
 
 app.use(express.json());
 
+//user session middleware
+app.use((req, res, next) => {
+  const sessionToken = req.cookies.session_token;
+
+  if (sessionToken) {
+    try {
+      const { userId: iat } = jwt.verify(
+        session.Token,
+        process.env.PRIVATE_SESSION_KEY
+      );
+      console.log(iat);
+      req.userId = userId;
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  }
+  next();
+});
+
 app.use("/", router);
 
 // app.use(bodyParser.urlencoded({ extended: true }));
