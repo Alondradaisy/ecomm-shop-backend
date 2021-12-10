@@ -14,6 +14,8 @@ router.get("product-data", ProductService.fetchAllProducts);
 // register user
 // upload an item to shop
 
+router.post("/login");
+
 router.post("add-to-bag");
 
 router.delete("remove-from-bag");
