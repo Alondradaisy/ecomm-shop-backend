@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const uuid = require("uuid");
 const jwt = require("jsonwebtoken");
-const UserController = require("../controller/UserController.js");
+const UserController = require("../controller/UserController");
 
 const uuidv4 = uuid.v4;
 
@@ -37,7 +37,7 @@ const login = async (req, res) => {
   );
 
   res
-    .cookie("session token", token, {
+    .cookie("session_token", token, {
       httpOnly: true,
       secure: false,
     })

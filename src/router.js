@@ -1,24 +1,26 @@
 const express = require("express");
 const ProductService = require("./services/ProductServices");
+const UserService = require("./services/userService");
+const UserController = require("./controller/UserController");
+//const PermissionsService = require("./services/PermissionsService");
 
 console.log("ProductService: ", ProductService);
 
 const router = express.Router();
 
-// Product route(s) - Retrieve product data for items \\
-router.get("product-data", ProductService.fetchAllProducts);
+// Product route(s)
+router.get("/product-data", ProductService.fetchAllProducts);
+
+// inserting products.
+router.post("/upload-product", ProductService.uploadProduct);
 
 // User routes \\
-// login
-// logout
-// register user
-// upload an item to shop
 
-router.post("/login");
+router.post("/register-user", UserService.registerUser);
 
-router.post("add-to-bag");
+router.post("/login", UserService.login);
 
-router.delete("remove-from-bag");
+router.get("/logout", UserService.logout);
 
 module.exports = router;
 

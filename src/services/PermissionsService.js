@@ -2,7 +2,9 @@ const UserController = require("../controller/UserController");
 
 const checkAdminPermission = async (req) => {
   if (req.userId) {
-    const userFound = await UserController.UserModel.find({ id: req.userId });
+    const userFound = await UserController.UserModel.findOne({
+      id: req.userId,
+    });
 
     if (userFound && userFound.isAdmin) {
       return true;
@@ -12,7 +14,7 @@ const checkAdminPermission = async (req) => {
   throw new Error("User does not have admin permissions");
 };
 
-const PermissionService = {
+const PermissionsService = {
   checkAdminPermission,
 };
 
