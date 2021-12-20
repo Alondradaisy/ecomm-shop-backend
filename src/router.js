@@ -1,18 +1,18 @@
 const express = require("express");
-const ProductService = require("./services/ProductServices");
+const ProductServices = require("./services/ProductServices");
 const UserService = require("./services/userService");
 const UserController = require("./controller/UserController");
 //const PermissionsService = require("./services/PermissionsService");
 
-console.log("ProductService: ", ProductService);
+console.log("ProductService: ", ProductServices);
 
 const router = express.Router();
 
 // Product route(s)
-router.get("/product-data", ProductService.fetchAllProducts);
+router.get("/product-data", ProductServices.fetchAllProducts);
 
 // inserting products.
-router.post("/upload-product", ProductService.uploadProduct);
+router.post("/upload-product", ProductServices.uploadProduct);
 
 // User routes \\
 

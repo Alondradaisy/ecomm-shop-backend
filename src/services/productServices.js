@@ -59,9 +59,9 @@ const uploadProduct = (req, res) => {
   });
 };
 
-const ProductService = {
+const ProductServices = {
   fetchAllProducts,
   uploadProduct,
 };
 
-module.exports = ProductService;
+module.exports = ProductServices;
